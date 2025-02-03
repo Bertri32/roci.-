@@ -6,6 +6,7 @@
     <title>Feliz 4 Meses Amor</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Estilos generales */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -13,24 +14,25 @@
             background: linear-gradient(135deg, #ffebf0, #fad0c4);
             background-attachment: fixed;
             background-size: cover;
-            text-align: center;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
-            overflow: hidden;
-            transition: background 1s ease;
+            text-align: center;
+            overflow-x: hidden;
+            padding-bottom: 20px; /* Para asegurarnos de que se vea el contenido al final */
         }
 
+        /* Animaciones */
         @keyframes floating {
-            from {transform: translateY(100vh); opacity: 1;}
-            to {transform: translateY(-100vh); opacity: 0;}
+            from { transform: translateY(100vh); opacity: 1; }
+            to { transform: translateY(-100vh); opacity: 0; }
         }
 
         @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes heartBeat {
@@ -38,6 +40,7 @@
             50% { transform: scale(1.2); }
         }
 
+        /* Corazón flotante */
         .heart {
             position: absolute;
             width: 40px;
@@ -52,92 +55,78 @@
         header {
             background: linear-gradient(135deg, #ff80ab, #ff8e92);
             color: white;
-            padding: 35px;
-            font-size: 36px;
+            padding: 20px;
+            font-size: 28px;
             font-family: 'Dancing Script', cursive;
             font-weight: 700;
             width: 100%;
             box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-            animation: fadeIn 2s ease-in-out;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             background-image: url('https://img.icons8.com/doodle/48/000000/love.png');
             background-repeat: no-repeat;
-            background-position: center right 30px;
-            background-size: 40px;
+            background-position: center right 20px;
+            background-size: 35px;
             padding-right: 50px;
+            transition: transform 0.3s ease-in-out;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .container {
-            max-width: 850px;
-            margin: 40px auto;
-            padding: 35px;
-            background: white;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
             box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
             border-radius: 18px;
             animation: fadeIn 3s ease-in-out;
-            transition: transform 0.4s ease-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container:hover {
-            transform: scale(1.02);
         }
 
         .love-message {
-            font-size: 24px;
+            font-size: 20px;
             color: #d63384;
-            margin-top: 20px;
+            margin-top: 15px;
             font-weight: 500;
-            line-height: 1.8;
-            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
         }
 
         .letter-button {
             display: inline-block;
             margin-top: 30px;
-            padding: 15px 30px;
-            font-size: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
             color: white;
             background: #ff80ab;
             border: none;
             border-radius: 12px;
             cursor: pointer;
             text-decoration: none;
-            transition: background 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .letter-button:hover {
             background: #e75b5b;
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
         }
 
+        /* Modal de la carta */
         .letter-modal {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
             background: #fff;
-            padding: 35px;
+            padding: 30px;
             border-radius: 18px;
             box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
             max-width: 700px;
             width: 100%;
             z-index: 1000;
             text-align: center;
-            transition: transform 0.3s ease-in-out, box-shadow 0.4s ease;
+            transition: transform 0.3s ease-in-out;
             background-color: #f9f1f9;
-            max-height: 80vh; /* Limita la altura */
-            overflow-y: auto; /* Permite el desplazamiento vertical */
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .letter-modal.active {
@@ -145,12 +134,10 @@
         }
 
         .message {
-            font-size: 22px;
+            font-size: 18px;
             color: #d63384;
             font-weight: 600;
-            line-height: 1.8;
-            font-family: 'Roboto', sans-serif;
-            text-align: left;
+            line-height: 1.6;
         }
 
         .close-button {
@@ -172,24 +159,7 @@
             transform: scale(1.05);
         }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
+        /* Confetti */
         .confetti {
             position: fixed;
             top: 0;
@@ -221,6 +191,31 @@
         @keyframes confettiFall {
             0% { top: -10px; transform: translateX(0); }
             100% { top: 100vh; transform: translateX(0); }
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            header {
+                font-size: 26px;
+            }
+
+            .container {
+                padding: 15px;
+                max-width: 90%;
+            }
+
+            .love-message {
+                font-size: 18px;
+            }
+
+            .letter-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            .message {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
