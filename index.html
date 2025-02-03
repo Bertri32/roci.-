@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz 4 Meses Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffebf0, #fad0c4);
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            transition: background 1s ease;
+        }
+
+        @keyframes floating {
+            from {transform: translateY(100vh); opacity: 1;}
+            to {transform: translateY(-100vh); opacity: 0;}
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .heart {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ff80ab;
+            clip-path: polygon(50% 0%, 61% 12%, 75% 12%, 87% 25%, 87% 38%, 75% 50%, 50% 75%, 25% 50%, 13% 38%, 13% 25%, 25% 12%, 39% 12%);
+            opacity: 0.8;
+            animation: floating 6s linear infinite, heartBeat 1.5s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff80ab, #ff8e92);
+            color: white;
+            padding: 35px;
+            font-size: 36px;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            width: 100%;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            animation: fadeIn 2s ease-in-out;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background-image: url('https://img.icons8.com/doodle/48/000000/love.png');
+            background-repeat: no-repeat;
+            background-position: center right 30px;
+            background-size: 40px;
+            padding-right: 50px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 35px;
+            background: white;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 18px;
+            animation: fadeIn 3s ease-in-out;
+            transition: transform 0.4s ease-out;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        .love-message {
+            font-size: 24px;
+            color: #d63384;
+            margin-top: 20px;
+            font-weight: 500;
+            line-height: 1.8;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .letter-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 20px;
+            color: white;
+            background: #ff80ab;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .letter-button:hover {
+            background: #e75b5b;
+            transform: scale(1.1);
+            box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .letter-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: #fff;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+            z-index: 1000;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.4s ease;
+            background-color: #f9f1f9;
+        }
+
+        .letter-modal.active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .message {
+            font-size: 22px;
+            color: #d63384;
+            font-weight: 600;
+            line-height: 1.8;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .close-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            font-size: 18px;
+            color: white;
+            background: #d63384;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .close-button:hover {
+            background: #b52d6f;
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1100;
+            display: none;
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff80ab;
+            border-radius: 50%;
+            animation: confettiFall 2s linear infinite;
+        }
+
+        .confetti div:nth-child(odd) {
+            background-color: #ff6d9d;
+        }
+
+        .confetti div:nth-child(even) {
+            background-color: #ff9fc0;
+        }
+
+        @keyframes confettiFall {
+            0% { top: -10px; transform: translateX(0); }
+            100% { top: 100vh; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        ¡Feliz 4 Meses, Amor! ❤️
+    </header>
+    <div class="container">
+        <h2 style="color: #ff80ab; font-weight: 600;">Te Amo Demasiado</h2>
+        <p class="love-message">Felices 4 meses, amor mío. Gracias por cada momento a tu lado, eres lo mejor que me ha pasado. Por muchos meses y años más juntos. ❤️</p>
+        <button class="letter-button" onclick="openLetter()">Carta para el amor de mi vida 💌</button>
+    </div>
+
+    <!-- Modal Carta -->
+    <div class="overlay" id="overlay"></div>
+    <div class="letter-modal" id="letterModal">
+        <p class="message">Bueno amor mio, no se como empezar esto, primero que nada ojala que te guste la sorpresita, la hice con mucho amor.
+            Segundo ya 4 meses al lado del amor de mi vida. No puedo estar más agradecido de tener una novia como vos, tenes todo para hacerme feliz, me entendes, me amas, sos todo para mí. 4 meses en los que me levanto y la primera persona en la que pienso es en vos y decirle buenos días. Gracias a Dios que esa persona sos vos. Quiero que sepas (aunque ya lo sabes) que sos muy especial para mí, sos la persona que quiero conmigo para el resto de mi vida.
+            <br><br>
+            TE AMO CON TODO MI COCORO.
+            <br>
+            Amo tus besitos, tus abrazos, todo de vos.
+            <br>
+            A por más meses juntos y OJALA AÑOS.
+            <br>
+            Te amo pupina hermosa ❤️
+        </p>
+        <button class="close-button" onclick="closeLetter()">Cerrar</button>
+    </div>
+
+    <!-- Corazones flotantes -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="heart" style="left: 30%; animation-delay: 1s;"></div>
+    <div class="heart" style="left: 50%; animation-delay: 2s;"></div>
+    <div class="heart" style="left: 70%; animation-delay: 3s;"></div>
+    <div class="heart" style="left: 90%; animation-delay: 4s;"></div>
+
+    <!-- Confeti -->
+    <div id="confetti" class="confetti"></div>
+
+    <script>
+        function openLetter() {
+            document.getElementById('letterModal').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+            showConfetti();
+        }
+
+        function closeLetter() {
+            document.getElementById('letterModal').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+            hideConfetti();
+        }
+
+        function showConfetti() {
+            const confetti = document.getElementById('confetti');
+            confetti.style.display = 'block';
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.style.left = `${Math.random() * 100}vw`;
+                confettiPiece.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                confettiPiece.style.animationDelay = `${Math.random() * 1}s`;
+                confetti.appendChild(confettiPiece);
+            }
+        }
+
+        function hideConfetti() {
+            document.getElementById('confetti').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
