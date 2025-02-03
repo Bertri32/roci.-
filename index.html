@@ -78,6 +78,7 @@
             border-radius: 18px;
             animation: fadeIn 3s ease-in-out;
             transition: transform 0.4s ease-out;
+            width: 90%; /* Ensures it adjusts well on mobile */
         }
 
         .container:hover {
@@ -124,7 +125,7 @@
             border-radius: 18px;
             box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
             max-width: 700px;
-            width: 100%;
+            width: 90%; /* Adjust for smaller devices */
             z-index: 1000;
             text-align: center;
             transition: transform 0.3s ease-in-out, box-shadow 0.4s ease;
@@ -211,6 +212,28 @@
         @keyframes confettiFall {
             0% { top: -10px; transform: translateX(0); }
             100% { top: 100vh; transform: translateX(0); }
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            header {
+                font-size: 28px;
+                padding: 20px;
+            }
+
+            .love-message {
+                font-size: 20px;
+                margin-top: 10px;
+            }
+
+            .letter-button {
+                padding: 12px 20px;
+                font-size: 18px;
+            }
+
+            .message {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
