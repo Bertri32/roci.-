@@ -16,12 +16,13 @@
             background-size: cover;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
             text-align: center;
-            overflow: hidden;
+            overflow-x: hidden;
             transition: background 1s ease;
+            padding-bottom: 20px; /* Para asegurarnos de que se vea el contenido al final */
         }
 
         @keyframes floating {
@@ -222,6 +223,38 @@
             0% { top: -10px; transform: translateX(0); }
             100% { top: 100vh; transform: translateX(0); }
         }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            header {
+                font-size: 28px;
+                padding: 25px;
+            }
+
+            .love-message {
+                font-size: 20px;
+                margin-top: 15px;
+            }
+
+            .letter-button {
+                padding: 12px 25px;
+                font-size: 18px;
+            }
+
+            .letter-modal {
+                width: 90%;
+                padding: 25px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -292,3 +325,4 @@
     </script>
 </body>
 </html>
+
