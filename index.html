@@ -129,8 +129,8 @@
             text-align: center;
             transition: transform 0.3s ease-in-out, box-shadow 0.4s ease;
             background-color: #f9f1f9;
-            max-height: 80vh; /* Limita la altura */
-            overflow-y: auto; /* Permite el desplazamiento vertical */
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .letter-modal.active {
@@ -213,6 +213,48 @@
         @keyframes confettiFall {
             0% { top: -10px; transform: translateX(0); }
             100% { top: 100vh; transform: translateX(0); }
+        }
+
+        /* Estilo para pantallas más pequeñas (móviles) */
+        @media screen and (max-width: 600px) {
+            header {
+                font-size: 28px; /* Reducir tamaño del texto del header */
+                padding: 20px;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 20px auto;
+                max-width: 90%; /* Ajustar el ancho */
+            }
+
+            .love-message {
+                font-size: 20px; /* Reducir tamaño de texto */
+            }
+
+            .letter-button {
+                padding: 12px 25px;
+                font-size: 18px; /* Reducir tamaño de los botones */
+            }
+
+            .letter-modal {
+                padding: 20px;
+                width: 90%; /* Ajustar el tamaño del modal */
+            }
+
+            .message {
+                font-size: 18px; /* Ajustar el tamaño del mensaje */
+            }
+
+            .close-button {
+                padding: 10px 20px;
+                font-size: 16px; /* Reducir tamaño del botón de cerrar */
+            }
+
+            .heart {
+                width: 30px;
+                height: 30px; /* Reducir tamaño de los corazones */
+            }
         }
     </style>
 </head>
